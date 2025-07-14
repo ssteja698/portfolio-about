@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-
 const projects = [
   {
     name: 'CHATBOT AND BOT BUILDER',
