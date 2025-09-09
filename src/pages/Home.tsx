@@ -192,7 +192,10 @@ const Home = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="" className="btn-primary text-center">
+                <Link
+                  to="https://sai-siva-teja-portfolio.vercel.app/"
+                  className="btn-primary text-center"
+                >
                   Portfolio
                 </Link>
                 <button
