@@ -1,13 +1,11 @@
-import { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import LoadingSpinner from './components/LoadingSpinner'
+import { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import LoadingSpinner from "./components/LoadingSpinner";
 
-const Home = lazy(() => import('./pages/Home'))
-const About = lazy(() => import('./pages/About'))
-const Projects = lazy(() => import('./pages/Projects'))
+const Home = lazy(() => import("./pages/Home"));
 
 function App() {
   return (
@@ -19,8 +17,6 @@ function App() {
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/projects" element={<Projects />} />
               </Routes>
             </AnimatePresence>
           </Suspense>
@@ -28,7 +24,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
