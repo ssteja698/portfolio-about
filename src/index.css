@@ -6,6 +6,8 @@
 
 .profile-icon img {
   border-radius: 20px;
+  width: 500px;
+  height: 500px;
 }
 
 @layer base {
@@ -32,7 +34,7 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-6 md:py-8;
   }
 
   .container-custom {

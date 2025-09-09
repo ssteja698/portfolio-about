@@ -133,60 +133,64 @@ const Home = () => {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary-50 to-primary-100 dark:from-zinc-800 dark:to-zinc-900">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-12">
             <motion.div
+              className="flex flex-col justify-between"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
-                Sai Siva Teja <span className="text-gradient">Bejjipuram</span>
-              </h1>
-              <h2 className="text-2xl font-semibold text-primary-700 dark:text-primary-400 mb-4">
-                Senior Frontend Developer
-              </h2>
-              <div className="flex flex-wrap items-center gap-4 mb-6 text-lg text-zinc-700 dark:text-zinc-300">
-                <span>
-                  <i className="fa-solid fa-square-envelope"></i>{" "}
-                  <a href="mailto:ssteja2205@gmail.com" className="underline">
-                    ssteja2205@gmail.com
-                  </a>
-                </span>
-                <span>
-                  <i className="fa-solid fa-square-phone"></i>{" "}
-                  <a href="tel:+917539964620" className="underline">
-                    +91 75399 64620
-                  </a>
-                </span>
-                <span>
-                  <i className="fa-brands fa-linkedin"></i>{" "}
-                  <a
-                    href="https://www.linkedin.com/in/ssteja698/"
-                    className="underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ssteja698
-                  </a>
-                </span>
-                <span>
-                  <i className="fa-brands fa-square-github"></i>{" "}
-                  <a
-                    href="https://github.com/ssteja698"
-                    className="underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ssteja698
-                  </a>
-                </span>
+              <div>
+                <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
+                  Sai Siva Teja{" "}
+                  <span className="text-gradient">Bejjipuram</span>
+                </h1>
+                <h2 className="text-2xl font-semibold text-primary-700 dark:text-primary-400 mb-4">
+                  Senior Frontend Developer
+                </h2>
+                <div className="flex flex-wrap items-center gap-4 mb-6 text-lg text-zinc-700 dark:text-zinc-300">
+                  <span>
+                    <i className="fa-solid fa-square-envelope"></i>{" "}
+                    <a href="mailto:ssteja2205@gmail.com" className="underline">
+                      ssteja2205@gmail.com
+                    </a>
+                  </span>
+                  <span>
+                    <i className="fa-solid fa-square-phone"></i>{" "}
+                    <a href="tel:+917539964620" className="underline">
+                      +91 75399 64620
+                    </a>
+                  </span>
+                  <span>
+                    <i className="fa-brands fa-linkedin"></i>{" "}
+                    <a
+                      href="https://www.linkedin.com/in/ssteja698/"
+                      className="underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      ssteja698
+                    </a>
+                  </span>
+                  <span>
+                    <i className="fa-brands fa-square-github"></i>{" "}
+                    <a
+                      href="https://github.com/ssteja698"
+                      className="underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      ssteja698
+                    </a>
+                  </span>
+                </div>
+                <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed max-w-2xl">
+                  Dynamic & results-driven professional, cultivating a robust
+                  career as a Senior Front-end Engineer, emphasizing the
+                  creation of cutting-edge web applications tailored for various
+                  sectors, while leveraging rich industry experience.
+                </p>
               </div>
-              <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed max-w-2xl">
-                Dynamic & results-driven professional, cultivating a robust
-                career as a Senior Front-end Engineer, emphasizing the creation
-                of cutting-edge web applications tailored for various sectors,
-                while leveraging rich industry experience.
-              </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="" className="btn-primary text-center">
                   Portfolio
