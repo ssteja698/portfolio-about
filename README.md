@@ -1,6 +1,6 @@
-# Sai Siva Teja Bejjipuram – Portfolio
+# About Sai Siva Teja Bejjipuram
 
-A modern, high-performance portfolio website built with React, TypeScript, Vite, and Tailwind CSS.
+A modern, high-performance portfolio about website built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## Features
 - **Hero section** with name, title, and contact info
@@ -36,7 +36,7 @@ npm run preview
 
 ## Project Structure
 ```
-portfolio-website/
+portfolio-about-website/
 ├── src/
 │   ├── components/      # Header, Footer, LoadingSpinner
 │   ├── pages/           # Home, About, Projects
