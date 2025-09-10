@@ -1,0 +1,17 @@
+# robots.txt for https://about-sai-siva-teja.vercel.app
+# General SEO-friendly configuration
+
+User-agent: *
+# Block internal/admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /temp/
+Disallow: /private/
+Disallow: /_next/          # (Next.js build output, if applicable)
+Disallow: /node_modules/   # (if somehow exposed)
+
+# Allow everything else
+Allow: /
+
+# Sitemap location (adjust to your domain)
+Sitemap: https://about-sai-siva-teja.vercel.app/sitemap.xml

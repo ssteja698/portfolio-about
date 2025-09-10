@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import ProfileIcon from "../assets/profile-icon.jpeg";
+import ProfileIcon from "../assets/profile-icon.jpg";
+import ProfileIconSm from "../assets/profile-icon-sm.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const experience = [
   {
@@ -134,12 +135,7 @@ const Home = () => {
       <section className="section-padding bg-gradient-to-br from-primary-50 to-primary-100 dark:from-zinc-800 dark:to-zinc-900">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-12">
-            <motion.div
-              className="flex flex-col justify-between"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            <div className="flex flex-col justify-between">
               <div>
                 <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
                   Sai Siva Teja{" "}
@@ -150,19 +146,19 @@ const Home = () => {
                 </h2>
                 <div className="flex flex-wrap items-center gap-4 mb-6 text-lg text-zinc-700 dark:text-zinc-300">
                   <span>
-                    <i className="fa-solid fa-square-envelope"></i>{" "}
+                    <FontAwesomeIcon icon={["fas", "square-envelope"]} />{" "}
                     <a href="mailto:ssteja2205@gmail.com" className="underline">
                       ssteja2205@gmail.com
                     </a>
                   </span>
                   <span>
-                    <i className="fa-solid fa-square-phone"></i>{" "}
+                    <FontAwesomeIcon icon={["fas", "square-phone"]} />{" "}
                     <a href="tel:+917539964620" className="underline">
                       +91 75399 64620
                     </a>
                   </span>
                   <span>
-                    <i className="fa-brands fa-linkedin"></i>{" "}
+                    <FontAwesomeIcon icon={["fab", "linkedin"]} />{" "}
                     <a
                       href="https://www.linkedin.com/in/ssteja698/"
                       className="underline"
@@ -173,7 +169,7 @@ const Home = () => {
                     </a>
                   </span>
                   <span>
-                    <i className="fa-brands fa-square-github"></i>{" "}
+                    <FontAwesomeIcon icon={["fab", "square-github"]} />{" "}
                     <a
                       href="https://github.com/ssteja698"
                       className="underline"
@@ -205,10 +201,14 @@ const Home = () => {
                   Download Resume
                 </button>
               </div>
-            </motion.div>
-            <motion.div className="profile-icon">
-              <img src={ProfileIcon} />
-            </motion.div>
+            </div>
+            <div className="profile-icon">
+              <picture>
+                <source srcSet={ProfileIconSm} media="(max-width: 600px)" />
+                <source srcSet={ProfileIcon} media="(max-width: 1024px)" />
+                <img src={ProfileIcon} alt="profile-icon" />
+              </picture>
+            </div>
           </div>
         </div>
       </section>
