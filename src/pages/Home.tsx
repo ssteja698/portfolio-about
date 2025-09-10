@@ -132,7 +132,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-50 to-primary-100 dark:from-zinc-800 dark:to-zinc-900">
+      <section className="section-padding from-primary-50 to-primary-100 dark:from-zinc-800 dark:to-zinc-900">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-12">
             <div className="flex flex-col justify-between">
@@ -301,7 +301,7 @@ const Home = () => {
                 {skills.programming.map((s) => (
                   <li
                     key={s}
-                    className="px-3 py-1 bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300 rounded-full text-sm"
+                    className="px-3 py-1 bg-primary-700 dark:bg-primary-900 text-white rounded-full text-sm"
                   >
                     {s}
                   </li>
@@ -316,7 +316,7 @@ const Home = () => {
                 {skills.libraries.map((s) => (
                   <li
                     key={s}
-                    className="px-3 py-1 bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300 rounded-full text-sm"
+                    className="px-3 py-1 bg-primary-700 dark:bg-primary-900 text-white rounded-full text-sm"
                   >
                     {s}
                   </li>
@@ -331,7 +331,7 @@ const Home = () => {
                 {skills.tools.map((s) => (
                   <li
                     key={s}
-                    className="px-3 py-1 bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300 rounded-full text-sm"
+                    className="px-3 py-1 bg-primary-700 dark:bg-primary-900 text-white rounded-full text-sm"
                   >
                     {s}
                   </li>
