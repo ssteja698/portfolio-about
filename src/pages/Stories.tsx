@@ -129,13 +129,6 @@ const Stories = () => {
             isAnimating ? "scale-[0.98] opacity-90" : ""
           }`}
         >
-          {/* Notebook holes */}
-          <div className="absolute left-4 md:left-8 inset-y-0 flex flex-col justify-evenly">
-            <div className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
-            <div className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
-            <div className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
-          </div>
-
           <div className="ml-8 md:ml-16 p-4 md:p-8">
             {/* Page header */}
             <div className="mb-6 md:mb-8 pb-4 border-b dark:border-zinc-800">
