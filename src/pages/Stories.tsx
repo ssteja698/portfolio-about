@@ -138,40 +138,32 @@ const Stories = () => {
 
           <div className="ml-16 p-8">
             {/* Page header */}
-            <div className="flex items-start justify-between mb-6 pb-4 border-b dark:border-zinc-800">
-              <div>
+            <div className="mb-8 pb-4 border-b dark:border-zinc-800">
+              <div className="flex items-start justify-between mb-2">
                 <h2 className="font-serif text-3xl font-bold text-zinc-800 dark:text-zinc-100">
                   {current?.title}
                 </h2>
-                <div className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-                  {selectedBook.title} • {selectedBook.author}
+                <div className="text-sm font-mono text-zinc-500 dark:text-zinc-400 mt-2 ml-4 shrink-0">
+                  Page {pageIndex + 1} of {pages.length}
                 </div>
               </div>
-              <div className="text-sm font-mono text-zinc-500 dark:text-zinc-400">
-                Page {pageIndex + 1} / {pages.length}
+              <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                {selectedBook.title} • {selectedBook.author}
               </div>
             </div>
 
-            {/* Page content with ruled lines */}
-            <div className="relative prose dark:prose-invert max-w-none mb-8">
-              {/* Ruled line background */}
-              <div
-                className="absolute inset-0 flex flex-col"
-                style={{ gap: "1.5rem" }}
-              >
-                {Array.from({ length: 15 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="h-px bg-indigo-100 dark:bg-zinc-800"
-                  ></div>
-                ))}
-              </div>
-
-              <div className="relative text-lg leading-[1.5] text-zinc-800 dark:text-zinc-100 font-serif space-y-6">
+            {/* Page content */}
+            <div className="mb-8">
+              <div className="text-lg text-zinc-800 dark:text-zinc-100 font-serif space-y-8">
                 {current?.content.map((paragraph, idx) => (
-                  <p key={idx} className="whitespace-pre-wrap">
-                    {paragraph}
-                  </p>
+                  <div key={idx} className="flex gap-6 items-baseline">
+                    <div className="text-indigo-500 dark:text-indigo-400">
+                      •
+                    </div>
+                    <p className="flex-1 whitespace-pre-wrap leading-relaxed">
+                      {paragraph}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
