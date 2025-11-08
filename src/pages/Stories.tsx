@@ -45,25 +45,25 @@ const Stories = () => {
   }
 
   return (
-    <div className="container-custom py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-pink-500 text-transparent bg-clip-text">
+    <div className="container-custom py-6 md:py-12">
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-pink-500 text-transparent bg-clip-text">
           Stories
         </h1>
-        <p className="text-zinc-600 dark:text-zinc-400 mt-2">
+        <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mt-2">
           Choose a book from the shelf to begin reading.
         </p>
       </div>
 
       {/* Book shelf with 3D effect */}
-      <div className="relative mb-12">
+      <div className="relative mb-8 md:mb-12">
         <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-r from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 rounded-lg"></div>
-        <div className="flex items-end gap-4 overflow-x-auto pb-4 px-1">
+        <div className="flex items-end gap-3 md:gap-4 overflow-x-auto pb-4 px-1 snap-x snap-mandatory">
           {books.map((book) => (
             <button
               key={book.id}
               onClick={() => setSelectedBookId(book.id)}
-              className={`group relative min-w-[200px] h-[280px] rounded-lg transition-transform duration-300 hover:scale-105 ${
+              className={`group relative min-w-[160px] md:min-w-[200px] h-[220px] md:h-[280px] rounded-lg transition-transform duration-300 hover:scale-105 snap-center ${
                 book.id === selectedBookId ? "translate-y-[-8px]" : ""
               }`}
             >
@@ -85,9 +85,9 @@ const Stories = () => {
                     className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20"
                   />
                 )}
-                <div className="relative h-full p-6 flex flex-col">
+                <div className="relative h-full p-4 md:p-6 flex flex-col">
                   <div
-                    className={`font-serif text-xl font-bold mb-2 ${
+                    className={`font-serif text-lg md:text-xl font-bold mb-2 ${
                       book.id === selectedBookId
                         ? "text-white"
                         : "text-zinc-800 dark:text-zinc-100"
@@ -97,7 +97,7 @@ const Stories = () => {
                   </div>
                   {book.author && (
                     <div
-                      className={`text-sm ${
+                      className={`text-xs md:text-sm ${
                         book.id === selectedBookId
                           ? "text-white/80"
                           : "text-zinc-600 dark:text-zinc-400"
@@ -130,33 +130,33 @@ const Stories = () => {
           }`}
         >
           {/* Notebook holes */}
-          <div className="absolute left-8 inset-y-0 flex flex-col justify-evenly">
-            <div className="w-3 h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
-            <div className="w-3 h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
-            <div className="w-3 h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
+          <div className="absolute left-4 md:left-8 inset-y-0 flex flex-col justify-evenly">
+            <div className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
+            <div className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
+            <div className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
           </div>
 
-          <div className="ml-16 p-8">
+          <div className="ml-8 md:ml-16 p-4 md:p-8">
             {/* Page header */}
-            <div className="mb-8 pb-4 border-b dark:border-zinc-800">
-              <div className="flex items-start justify-between mb-2">
-                <h2 className="font-serif text-3xl font-bold text-zinc-800 dark:text-zinc-100">
+            <div className="mb-6 md:mb-8 pb-4 border-b dark:border-zinc-800">
+              <div className="flex items-start justify-between mb-2 flex-wrap gap-2">
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-zinc-800 dark:text-zinc-100">
                   {current?.title}
                 </h2>
-                <div className="text-sm font-mono text-zinc-500 dark:text-zinc-400 mt-2 ml-4 shrink-0">
+                <div className="text-xs md:text-sm font-mono text-zinc-500 dark:text-zinc-400 mt-1 md:mt-2">
                   Page {pageIndex + 1} of {pages.length}
                 </div>
               </div>
-              <div className="text-sm text-zinc-500 dark:text-zinc-400">
+              <div className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400">
                 {selectedBook.title} • {selectedBook.author}
               </div>
             </div>
 
             {/* Page content */}
-            <div className="mb-8">
-              <div className="text-lg text-zinc-800 dark:text-zinc-100 font-serif space-y-8">
+            <div className="mb-6 md:mb-8">
+              <div className="text-base md:text-lg text-zinc-800 dark:text-zinc-100 font-serif space-y-6 md:space-y-8">
                 {current?.content.map((paragraph, idx) => (
-                  <div key={idx} className="flex gap-6 items-baseline">
+                  <div key={idx} className="flex gap-4 md:gap-6 items-baseline">
                     <div className="text-indigo-500 dark:text-indigo-400">
                       •
                     </div>
@@ -169,11 +169,11 @@ const Stories = () => {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between pt-4 border-t dark:border-zinc-800">
-              <div className="flex gap-3">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-0 md:justify-between pt-4 border-t dark:border-zinc-800">
+              <div className="flex gap-3 w-full md:w-auto">
                 <button
                   onClick={goPrev}
-                  className="px-4 py-2 rounded-lg font-medium text-sm transition-colors
+                  className="flex-1 md:flex-none px-4 py-2 rounded-lg font-medium text-sm transition-colors
                     bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800
                     text-white disabled:opacity-50 disabled:hover:from-indigo-600 disabled:hover:to-indigo-700"
                   disabled={pageIndex === 0}
@@ -182,7 +182,7 @@ const Stories = () => {
                 </button>
                 <button
                   onClick={goNext}
-                  className="px-4 py-2 rounded-lg font-medium text-sm transition-colors
+                  className="flex-1 md:flex-none px-4 py-2 rounded-lg font-medium text-sm transition-colors
                     bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800
                     text-white disabled:opacity-50 disabled:hover:from-indigo-600 disabled:hover:to-indigo-700"
                   disabled={pageIndex === pages.length - 1}
@@ -191,7 +191,7 @@ const Stories = () => {
                 </button>
               </div>
 
-              <div className="text-sm text-zinc-400 dark:text-zinc-500 font-serif italic">
+              <div className="text-xs md:text-sm text-zinc-400 dark:text-zinc-500 font-serif italic text-center md:text-left">
                 Made with ❤️ — enjoy reading
               </div>
             </div>
