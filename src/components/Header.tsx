@@ -15,7 +15,22 @@ const Header = () => {
             About
           </Link>
 
-          {/* Theme Toggle & Mobile Menu Button */}
+          {/* Main Nav, Theme Toggle & Mobile Menu Button */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link
+              to="/"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:underline"
+            >
+              Home
+            </Link>
+            <Link
+              to="/stories"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:underline"
+            >
+              Stories
+            </Link>
+          </nav>
+
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}

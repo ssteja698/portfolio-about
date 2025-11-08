@@ -1,0 +1,77 @@
+{
+  "books": [
+    {
+      "id": "book-1",
+      "title": "The Midnight Developer",
+      "author": "S. Teja",
+      "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400",
+      "pages": [
+        {
+          "id": "b1-p1",
+          "title": "Chapter 1: A Late Night Discovery",
+          "content": [
+            "The clock struck midnight as Sarah's fingers danced across the keyboard, the soft blue glow of her monitor illuminating her determined expression. The office was empty, but her mind was full of possibilities.",
+            "She had been working on this algorithm for weeks, and tonight felt different. The code wasn't just working—it was singing. Each function flowed into the next with an elegance she had never achieved before.",
+            "'Could it be this simple?' she whispered to herself, taking another sip of her now-cold coffee."
+          ]
+        },
+        {
+          "id": "b1-p2",
+          "title": "Chapter 2: The Code Whispers",
+          "content": [
+            "The terminal blinked expectantly. Sarah's latest commit had triggered something unexpected—a pattern in her program's output that shouldn't have been possible.",
+            "Line after line of data scrolled past, but there was something hidden in the noise. A message? No, more like an echo of her own code, twisted and reformed into something new.",
+            "'Debug output shouldn't look like this,' she thought, leaning closer to the screen. The patterns were almost... beautiful."
+          ]
+        },
+        {
+          "id": "b1-p3",
+          "title": "Chapter 3: Digital Dreams",
+          "content": [
+            "As the night deepened, the boundaries between coder and code began to blur. Sarah found herself dreaming in algorithms, thinking in data structures.",
+            "Her project had evolved beyond a simple optimization problem. It had become a journey into the very nature of computation itself.",
+            "'Every bug is just a feature waiting to be understood,' she remembered her mentor saying. Tonight, those words took on a whole new meaning."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book-2",
+      "title": "Letters to a Young Programmer",
+      "author": "S. Teja",
+      "cover": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400",
+      "pages": [
+        {
+          "id": "b2-p1",
+          "title": "Letter I: On Beginning",
+          "content": [
+            "My dear apprentice,",
+            "You asked me yesterday why programming often feels like scaling a mountain whose peak remains forever hidden in clouds. I smiled because I remember having the same thought twenty years ago.",
+            "Here's what I wish someone had told me then: The mountain has no peak. Each plateau you reach simply reveals new heights to explore, new territories to map. That's not the curse of programming—it's the blessing.",
+            "Every programmer's journey begins not with code, but with curiosity. Keep that alive, and the rest will follow."
+          ]
+        },
+        {
+          "id": "b2-p2",
+          "title": "Letter II: On Craftsmanship",
+          "content": [
+            "Dear student,",
+            "Today we talk about elegance in code. Many think it's about writing clever one-liners or using the latest framework. They're missing the point.",
+            "True elegance in programming is like poetry: it's not about being clever, but about being clear. It's about writing code that tells its own story, that reveals its intent at a glance.",
+            "When you find yourself admiring code's simplicity, that's when you know you're beginning to understand. Complexity is easy. Simplicity is hard. Chase simplicity."
+          ]
+        },
+        {
+          "id": "b2-p3",
+          "title": "Letter III: On Growth",
+          "content": [
+            "My friend,",
+            "You mentioned feeling overwhelmed by how much there is to learn. Good. That feeling never goes away—and it shouldn't.",
+            "In our field, the moment you feel you've learned everything is the moment you begin to fade. The best programmers I know are eternal beginners. They approach each problem with fresh eyes and a willingness to question their own assumptions.",
+            "Embrace the vastness of what you don't know. Let it excite you rather than frighten you. That's where growth begins."
+          ]
+        }
+      ]
+    }
+  ]
+}

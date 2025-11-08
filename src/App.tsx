@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const Home = lazy(() => import("./pages/Home"));
+const Stories = lazy(() => import("./pages/Stories"));
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/stories" element={<Stories />} />
           </Routes>
         </main>
         <Footer />
