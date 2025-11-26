@@ -541,6 +541,29 @@
           ]
         }
       ]
+    },
+    {
+      "id": "book-4",
+      "title": "The Seed of Patience",
+      "author": "Sai Siva Teja B",
+      "cover": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400",
+      "pages": [
+        {
+          "id": "b3-p1",
+          "title": "The Seed of Patience",
+          "content": [
+            "There was once a small boy named Dev who loved drawing. Every day after school, he would sit under a neem tree with his sketchbook, trying to draw birds. But no matter how hard he tried, his bird sketches always looked uneven and clumsy. His classmates teased him, saying he had 'two left hands' and should give up.",
+            "One afternoon, after another disappointing attempt, Dev closed his sketchbook and sighed. He wondered if everyone was right—maybe he really wasn’t good enough. Just then, an old gardener who often saw Dev practicing walked over and placed a freshly sprouted plant beside him.",
+            "The gardener said, 'This plant was once just a tiny seed. For days it looked like nothing was happening. But underground, it was growing silently, preparing for sunlight. Skill grows the same way.' His words struck Dev deeply.",
+            "Inspired, Dev decided he would give himself time—time to practice, time to fail, time to grow. He drew every day, not to be perfect, but to be better than yesterday. Slowly, his lines steadied, his shapes balanced, and his birds began to look alive.",
+            "Months passed, and one day during an art competition, the judges paused in front of Dev’s drawing—a graceful kingfisher perched on a branch. It won first prize. Dev held the certificate with trembling joy, not because he won, but because he proved to himself that patience and effort always bloom.",
+            "As he walked home, he whispered to himself, 'Growth can be slow… but it is never wasted.'",
+            "Bhagavad Gita Sloka (Chapter 2, Verse 47):",
+            "Karmanye vadhikaraste ma phaleshu kadachana; Ma karma-phala-hetur bhur ma te sango ’stvakarmani.",
+            "Meaning: You have the right to perform your actions, but not to the fruits. Never be attached to the results, nor let yourself fall into inaction."
+          ]
+        }
+      ]
     }
   ]
 }
