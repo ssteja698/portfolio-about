@@ -1,29 +1,98 @@
-import { useEffect, useMemo, useState } from "react";
-import storiesData from "../constants/stories.json";
+import { useEffect, useMemo, useState, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { booksMeta, loadBookById } from "../constants/stories";
 import type { StoryBook, StoryPage } from "../types";
 
 const Stories = () => {
-  const books: StoryBook[] = useMemo(
-    () => (storiesData as any).books || [],
-    []
+  const { bookId } = useParams<{ bookId?: string }>();
+  const navigate = useNavigate();
+  const books = useMemo(() => booksMeta || [], []);
+  const [selectedBookId, setSelectedBookId] = useState<string | null>(
+    bookId || null
   );
-  const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
-  const selectedBook =
+  const bookButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [loadedBooks, setLoadedBooks] = useState<Record<string, StoryBook>>({});
+  const [isLoadingBook, setIsLoadingBook] = useState(false);
+  const selectedMeta =
     books.find((b) => b.id === selectedBookId) || books[0] || null;
+  const selectedBook = selectedBookId
+    ? loadedBooks[selectedBookId] || null
+    : null;
   const [pageIndex, setPageIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    // default to first book
     if (!selectedBookId && books.length > 0) {
       setSelectedBookId(books[0].id);
     }
   }, [books, selectedBookId]);
 
   useEffect(() => {
-    // reset page when book changes
+    if (bookId && books.length > 0) {
+      const exists = books.some((b) => b.id === bookId);
+      if (!exists) {
+        const firstId = books[0].id;
+        setSelectedBookId(firstId);
+      }
+    }
+  }, [bookId, books, navigate]);
+
+  useEffect(() => {
+    if (selectedBookId) {
+      navigate(`/stories/${selectedBookId}`, { replace: true });
+    }
+  }, [selectedBookId, navigate]);
+
+  useEffect(() => {
+    let animationFrameId: number | null = null;
+    let isExecuted = false;
+
+    const attemptScroll = () => {
+      const button = bookButtonRefs.current[selectedBookId || ""];
+
+      if (button && !isExecuted) {
+        isExecuted = true;
+        button.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      } else if (!isExecuted) {
+        animationFrameId = requestAnimationFrame(attemptScroll);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(attemptScroll);
+
+    return () => {
+      if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
+    };
+  }, [selectedBookId]);
+
+  useEffect(() => {
     setPageIndex(0);
   }, [selectedBookId]);
+
+  useEffect(() => {
+    if (!selectedBookId) return;
+    if (loadedBooks[selectedBookId]) return;
+
+    let cancelled = false;
+    setIsLoadingBook(true);
+    loadBookById(selectedBookId)
+      .then((book) => {
+        if (cancelled || !book) return;
+        setLoadedBooks((prev) => ({ ...prev, [book.id]: book }));
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingBook(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedBookId, loadedBooks]);
 
   if (!selectedBook) {
     return <div className="container-custom py-16">No stories available.</div>;
@@ -58,10 +127,16 @@ const Stories = () => {
       {/* Book shelf with 3D effect */}
       <div className="relative mb-8 md:mb-12">
         <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-r from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 rounded-lg"></div>
-        <div className="flex items-end gap-3 md:gap-4 overflow-x-auto pb-4 px-1 snap-x snap-mandatory">
+        <div
+          ref={scrollContainerRef}
+          className="flex items-end gap-3 md:gap-4 overflow-x-auto pb-4 px-1 snap-x snap-mandatory"
+        >
           {books.map((book) => (
             <button
               key={book.id}
+              ref={(el) => {
+                bookButtonRefs.current[book.id] = el;
+              }}
               onClick={() => setSelectedBookId(book.id)}
               className={`group relative min-w-[160px] md:min-w-[200px] h-[220px] md:h-[280px] rounded-lg transition-transform duration-300 hover:scale-105 snap-center ${
                 book.id === selectedBookId ? "translate-y-[-8px]" : ""
@@ -113,7 +188,7 @@ const Stories = () => {
                         : "text-zinc-500 dark:text-zinc-500"
                     }`}
                   >
-                    {book.pages.length} pages
+                    {book.pageCount} pages
                   </div>
                 </div>
               </div>
@@ -137,28 +212,42 @@ const Stories = () => {
                   {current?.title}
                 </h2>
                 <div className="text-xs md:text-sm font-mono text-zinc-500 dark:text-zinc-400 mt-1 md:mt-2">
-                  Page {pageIndex + 1} of {pages.length}
+                  Page {pages.length > 0 ? pageIndex + 1 : "-"} of{" "}
+                  {pages.length || selectedMeta.pageCount}
                 </div>
               </div>
               <div className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400">
-                {selectedBook.title} • {selectedBook.author}
+                {selectedMeta.title} • {selectedMeta.author}
               </div>
             </div>
 
             {/* Page content */}
             <div className="mb-6 md:mb-8">
-              <div className="text-base md:text-lg text-zinc-800 dark:text-zinc-100 font-serif space-y-6 md:space-y-8">
-                {current?.content.map((paragraph, idx) => (
-                  <div key={idx} className="flex gap-4 md:gap-6 items-baseline">
-                    <div className="text-indigo-500 dark:text-indigo-400">
-                      •
+              {isLoadingBook && !selectedBook ? (
+                <div className="py-8 text-center text-zinc-500">
+                  Loading book…
+                </div>
+              ) : pages.length === 0 ? (
+                <div className="py-8 text-center text-zinc-500">
+                  No pages to display.
+                </div>
+              ) : (
+                <div className="text-base md:text-lg text-zinc-800 dark:text-zinc-100 font-serif space-y-6 md:space-y-8">
+                  {current?.content.map((paragraph, idx) => (
+                    <div
+                      key={idx}
+                      className="flex gap-4 md:gap-6 items-baseline"
+                    >
+                      <div className="text-indigo-500 dark:text-indigo-400">
+                        •
+                      </div>
+                      <p className="flex-1 whitespace-pre-wrap leading-relaxed">
+                        {paragraph}
+                      </p>
                     </div>
-                    <p className="flex-1 whitespace-pre-wrap leading-relaxed">
-                      {paragraph}
-                    </p>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Navigation */}
@@ -169,7 +258,7 @@ const Stories = () => {
                   className="flex-1 md:flex-none px-4 py-2 rounded-lg font-medium text-sm transition-colors
                     bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800
                     text-white disabled:opacity-50 disabled:hover:from-indigo-600 disabled:hover:to-indigo-700"
-                  disabled={pageIndex === 0}
+                  disabled={pageIndex === 0 || pages.length === 0}
                 >
                   ← Previous
                 </button>
@@ -178,7 +267,9 @@ const Stories = () => {
                   className="flex-1 md:flex-none px-4 py-2 rounded-lg font-medium text-sm transition-colors
                     bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800
                     text-white disabled:opacity-50 disabled:hover:from-indigo-600 disabled:hover:to-indigo-700"
-                  disabled={pageIndex === pages.length - 1}
+                  disabled={
+                    pages.length === 0 || pageIndex === pages.length - 1
+                  }
                 >
                   Next →
                 </button>
