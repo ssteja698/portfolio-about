@@ -13,16 +13,16 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="text-2xl font-bold text-gradient">
-              About
+              Home
             </Link>
 
             {/* Main Nav */}
             <nav className="hidden md:flex items-center space-x-6">
               <Link
-                to="/"
+                to="https://sai-siva-teja-portfolio.vercel.app/"
                 className="text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:underline"
               >
-                Home
+                Portfolio
               </Link>
               <Link
                 to="/stories"
