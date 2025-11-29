@@ -11,7 +11,6 @@ const Stories = () => {
     bookId || null
   );
   const bookButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [loadedBooks, setLoadedBooks] = useState<Record<string, StoryBook>>({});
   const [isLoadingBook, setIsLoadingBook] = useState(false);
   const selectedMeta =
@@ -23,25 +22,26 @@ const Stories = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    if (!selectedBookId && books.length > 0) {
-      setSelectedBookId(books[0].id);
-    }
-  }, [books, selectedBookId]);
+    if (books.length === 0) return;
+    const firstId = books[0].id;
 
-  useEffect(() => {
-    if (bookId && books.length > 0) {
+    if (bookId) {
       const exists = books.some((b) => b.id === bookId);
-      if (!exists) {
-        const firstId = books[0].id;
-        setSelectedBookId(firstId);
+      if (exists) {
+        if (selectedBookId !== bookId) setSelectedBookId(bookId);
+      } else {
+        if (selectedBookId !== firstId) setSelectedBookId(firstId);
       }
+      return;
     }
+
+    if (!selectedBookId) setSelectedBookId(firstId);
   }, [bookId, books, navigate]);
 
   useEffect(() => {
-    if (selectedBookId) {
-      navigate(`/stories/${selectedBookId}`, { replace: true });
-    }
+    if (!selectedBookId) return;
+    setPageIndex(0);
+    navigate(`/stories/${selectedBookId}`, { replace: true });
   }, [selectedBookId, navigate]);
 
   useEffect(() => {
@@ -68,10 +68,6 @@ const Stories = () => {
     return () => {
       if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
     };
-  }, [selectedBookId]);
-
-  useEffect(() => {
-    setPageIndex(0);
   }, [selectedBookId]);
 
   useEffect(() => {
@@ -127,10 +123,7 @@ const Stories = () => {
       {/* Book shelf with 3D effect */}
       <div className="relative mb-8 md:mb-12">
         <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-r from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 rounded-lg"></div>
-        <div
-          ref={scrollContainerRef}
-          className="flex items-end gap-3 md:gap-4 overflow-x-auto pb-4 px-1 snap-x snap-mandatory"
-        >
+        <div className="flex items-end gap-3 md:gap-4 overflow-x-auto pb-4 px-1 snap-x snap-mandatory">
           {books.map((book) => (
             <button
               key={book.id}
