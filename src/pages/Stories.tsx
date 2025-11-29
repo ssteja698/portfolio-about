@@ -90,12 +90,12 @@ const Stories = () => {
     };
   }, [selectedBookId, loadedBooks]);
 
-  if (!selectedBook) {
+  if (books.length === 0) {
     return <div className="container-custom py-16">No stories available.</div>;
   }
 
-  const pages: StoryPage[] = selectedBook.pages;
-  const current = pages[pageIndex];
+  const pages: StoryPage[] = selectedBook ? selectedBook.pages : [];
+  const current = pages[pageIndex] || null;
 
   function goNext() {
     setIsAnimating(true);
@@ -150,6 +150,7 @@ const Stories = () => {
                   <img
                     src={book.cover}
                     alt={book.title}
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20"
                   />
                 )}
