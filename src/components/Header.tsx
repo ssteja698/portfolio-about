@@ -103,7 +103,7 @@ const Header = () => {
             className="text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400"
             onClick={() => setIsMenuOpen(false)}
           >
-            Home
+            About
           </Link>
           <Link
             to="/stories"
